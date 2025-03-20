@@ -1,6 +1,7 @@
 describe("String Calculator", () => {
+  const calculator = require("./calculator");
+
   test("should return 0 for an empty string", () => {
-    const calculator = require("./calculator");
     expect(calculator.add("")).toBe(0);
   });
 
