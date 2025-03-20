@@ -1,8 +1,7 @@
 const add = (numbers) => {
   if (numbers === "") return 0;
-  if (!numbers.includes(",")) return parseInt(numbers);
-  const [num1, num2] = numbers.split(",").map(num => parseInt(num));
-  return num1 + num2;
+  const nums = numbers.split(",").map(num => parseInt(num));
+  return nums.reduce((sum, num) => sum + num, 0);
 }
 
 module.exports = { add };
