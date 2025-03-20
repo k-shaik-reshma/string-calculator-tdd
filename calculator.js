@@ -1,16 +1,16 @@
 const add = (numbers) => {
   if (numbers === "") return 0;
-  
+
   let delimiter = ",";
-  let numberString = numbers;
-  
+  let numString = numbers;
+
   if (numbers.startsWith("//")) {
-    const parts = numbers.split("\n", 2);
-    delimiter = parts[0].slice(2);
-    numberString = parts[1];
+    const [delimLine, ...rest] = numbers.split("\n");
+    delimiter = delimLine.slice(2);
+    numString = rest.join("\n");
   }
-  
-  const nums = numberString.split(new RegExp(`${delimiter}|\\n`)).map(num => parseInt(num));
+
+  const nums = numString.split(new RegExp(`${delimiter}|\\n`)).map(num => parseInt(num));
   return nums.reduce((sum, num) => sum + num, 0);
 }
 
