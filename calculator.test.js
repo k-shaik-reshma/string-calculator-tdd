@@ -12,4 +12,24 @@ describe("String Calculator", () => {
   test("should return the sum of two comma-separated numbers", () => {
     expect(calculator.add("1,5")).toBe(6);
   });
+
+  test("should return the sum of multiple comma-separated numbers", () => {
+    expect(calculator.add("1,2,3,4")).toBe(10);
+  });
+
+  test("should handle newlines as delimiters", () => {
+    expect(calculator.add("1\n2,3")).toBe(6);
+  });
+
+  test("should support a custom delimiter", () => {
+    expect(calculator.add("//;\n1;2")).toBe(3);
+  });
+
+  test("should throw an exception for a negative number", () => {
+    expect(() => calculator.add("1,-2")).toThrow("negative numbers not allowed: -2");
+  });
+
+  test("should throw an exception with all negatives listed", () => {
+    expect(() => calculator.add("1,-2,-3")).toThrow("negative numbers not allowed: -2, -3");
+  });
 });
